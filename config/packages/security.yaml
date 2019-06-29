@@ -20,6 +20,9 @@ security:
             pattern:    ^/
             http_basic: ~
             provider: our_db_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -32,3 +35,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

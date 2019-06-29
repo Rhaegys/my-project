@@ -51,7 +51,10 @@ class User implements UserInterface
     {
         return $this->username;
     }
-
+    public function getId()
+    {
+        return $this->id;
+    }
     public function setUsername($username)
     {
         $this->username = $username;
@@ -66,7 +69,6 @@ class User implements UserInterface
     {
         $this->email = $email;
     }
-
     
     public function getPlainPassword()
     {
@@ -100,5 +102,5 @@ class User implements UserInterface
     public function getSalt()
     {
     }   
-    
+
 }
