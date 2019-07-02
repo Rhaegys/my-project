@@ -81,6 +81,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "jeremeamia/superclosure": {
+        "version": "2.4.0"
+    },
     "nikic/php-parser": {
         "version": "v4.2.2"
     },
@@ -90,6 +93,15 @@
     "ocramius/proxy-manager": {
         "version": "2.1.1"
     },
+    "php-di/invoker": {
+        "version": "2.0.0"
+    },
+    "php-di/php-di": {
+        "version": "6.0.8"
+    },
+    "php-di/phpdoc-reader": {
+        "version": "2.1.0"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -98,18 +110,6 @@
     },
     "psr/log": {
         "version": "1.1.0"
-    },
-    "sensio/framework-extra-bundle": {
-        "version": "5.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "5.2",
-            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
-        },
-        "files": [
-            "./config/packages/sensio_framework_extra.yaml"
-        ]
     },
     "symfony/cache": {
         "version": "v4.3.2"
@@ -190,6 +190,12 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v4.3.2"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.5"
     },
     "symfony/http-foundation": {
         "version": "v4.3.2"
@@ -276,6 +282,9 @@
         "version": "v4.3.2"
     },
     "symfony/security-http": {
+        "version": "v4.3.2"
+    },
+    "symfony/serializer": {
         "version": "v4.3.2"
     },
     "symfony/service-contracts": {
