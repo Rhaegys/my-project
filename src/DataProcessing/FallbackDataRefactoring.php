@@ -7,7 +7,7 @@ class FallbackDataRefactoring implements DataRefactoring
      * @var DataRefactoring
      */
     private $refactoring;
-    public function __construct(DataRefactoring ...$refactoring)
+    public function __construct(DataRefactoring $refactoring)
     {
         $this->refactoring = $refactoring;
     }

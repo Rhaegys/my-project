@@ -7,7 +7,7 @@ class FallbackDataRetrieval implements DataRetrieval
      * @var DataRetrieval
      */
     private $retrieval;
-    public function __construct(DataRetrieval ...$retrieval)
+    public function __construct(DataRetrieval $retrieval)
     {
         $this->retrieval = $retrieval;
     }
