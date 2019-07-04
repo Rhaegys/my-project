@@ -25,3 +25,34 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+<<<<<<< Updated upstream
+=======
+
+    #App\DataProcessing\FallbackDataProcessing:
+    #    arguments:
+    #        - '@App\DataProcessing\AV'
+    #        - '@App\DataProcessing\WTG'
+
+    #App\Controller\ProcessDataController:
+    #    arguments:
+    #        $dataRetrieval: '@App\DataProcessing\GetDataFromAlpha'
+    #        $dataRefactoring: '@App\DataProcessing\RefactorAlphaData'
+
+    App\DataProcessing\FallbackDataRetrieval:
+        arguments:
+            - '@App\DataProcessing\GetDataFromAlpha'
+    App\DataProcessing\FallbackDataRefactoring:
+        arguments:
+            - '@App\DataProcessing\RefactorAlphaData'
+    #App\Controller\ProcessDataController:
+    #    arguments:
+    #       $dataRetrieval: '@App\DataProcessing\FallbackDataRetrieval'
+    #       $dataRefactoring: '@App\DataProcessing\FallbackDataRefactoring'
+    App\Controller\ProcessDataController:
+        public: true
+        bind: 
+            $dataRetrieval: '@App\DataProcessing\GetDataFromAlpha'
+            $dataRefactoring: '@App\DataProcessing\RefactorAlphaData'
+    
+            
+>>>>>>> Stashed changes
