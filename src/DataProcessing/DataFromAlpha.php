@@ -1,8 +1,12 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\DataProcessing;
 
-class GetDataFromAlpha implements DataRetrieval
+use Symfony\Component\HttpClient\NativeHttpClient;
+
+class DataFromAlpha implements DataRetrieval
 {
     public function getData()
     {
@@ -12,9 +16,4 @@ class GetDataFromAlpha implements DataRetrieval
         $data = json_decode($contents, true);
         return $data;
     }
-    /*public function refactorData($data)
-    {
-        $data1=$data['Technical Analysis: MIDPOINT'];
-        return $data1;
-    }*/
 }

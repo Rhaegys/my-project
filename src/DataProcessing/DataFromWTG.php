@@ -2,7 +2,9 @@
 
 namespace App\DataProcessing;
 
-class GetDataFromWTG implements DataRetrieval
+use Symfony\Component\HttpClient\NativeHttpClient;
+
+class DataFromWTG implements DataRetrieval
 {
     public function getData()
     {
@@ -11,10 +13,5 @@ class GetDataFromWTG implements DataRetrieval
         $contents = $response->getContent();
         $data = json_decode($contents, true);
         return $data;
-    }
-    /*public function refactorData($data)
-    {
-        $data1=$data['Technical Analysis: MIDPOINT'];
-        return $data1;
-    }*/
+    }    
 }

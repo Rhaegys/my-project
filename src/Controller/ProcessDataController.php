@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
-//use App\DataProcessing\Data;
-use App\DataProcessing\DataProcessing;
-
+use App\DataProcessing\DataRetrieval;
+use App\DataProcessing\DataRefactoring;
+use App\DataProcessing\RefactoredAlphaData;
+use App\DataProcessing\RefactoredWTGData;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\NativeHttpClient;
+#use App\DataProcessing\DataFromAlpha;
+#use App\DataProcessing\DataFromWTG;
 
 class ProcessDataController extends AbstractController
 {
@@ -25,7 +28,6 @@ class ProcessDataController extends AbstractController
         $this->dataRetrieval = $dataRetrieval;
         $this->dataRefactoring = $dataRefactoring;
     }
-
     /**
      * @Route("/process/data", name="process_data")
      */
@@ -34,10 +36,9 @@ class ProcessDataController extends AbstractController
         $dataRaw = $this->dataRetrieval->getData();
         $data=$this->dataRefactoring->refactorData($dataRaw);
 
-
         return $this->render('process_data/index.html.twig', [
             'controller_name' => 'ProcessDataController',
-            'data' => $data,
+            'data'=> $data
         ]);
     }
 }

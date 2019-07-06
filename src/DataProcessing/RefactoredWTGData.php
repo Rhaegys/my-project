@@ -2,7 +2,7 @@
 
 namespace App\DataProcessing;
 
-class RefactorWTGData implements DataRefactoring
+class RefactoredWTGData implements DataRefactoring
 {
     public function refactorData($data)
     {
