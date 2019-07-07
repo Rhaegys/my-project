@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -46,6 +48,21 @@ class User implements UserInterface
      * @ORM\Column(type="array")
      */
     private $roles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Instrument", mappedBy="owner", orphanRemoval=true)
+     */
+    private $assets;
+
+    public function __construct()
+    {
+        $this->assets = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+       return strval( $this->getId() );
+    }
 
     public function getUsername()
     {
@@ -103,5 +120,36 @@ class User implements UserInterface
 
     public function getSalt()
     {
+    }
+
+    /**
+     * @return Collection|Instrument[]
+     */
+    public function getAssets(): Collection
+    {
+        return $this->assets;
+    }
+
+    public function addAsset(Instrument $asset): self
+    {
+        if (!$this->assets->contains($asset)) {
+            $this->assets[] = $asset;
+            $asset->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAsset(Instrument $asset): self
+    {
+        if ($this->assets->contains($asset)) {
+            $this->assets->removeElement($asset);
+            // set the owning side to null (unless already changed)
+            if ($asset->getOwner() === $this) {
+                $asset->setOwner(null);
+            }
+        }
+
+        return $this;
     }   
 }

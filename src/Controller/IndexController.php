@@ -17,7 +17,7 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         /** @var \App\Entity\User $user */
         $userData = $this->getUser()->getUsername();
-        
+              
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
             'data' => $userData,

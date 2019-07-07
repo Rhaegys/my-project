@@ -9,8 +9,6 @@ use App\DataProcessing\RefactoredWTGData;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\NativeHttpClient;
-#use App\DataProcessing\DataFromAlpha;
-#use App\DataProcessing\DataFromWTG;
 
 class ProcessDataController extends AbstractController
 {
