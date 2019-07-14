@@ -2,9 +2,12 @@
 
 namespace App\DataProcessing;
 
+/**
+ * This class refactors data from WTG API into single data format
+ */
 class RefactoredWTGData implements DataRefactoring
 {
-    public function refactorData($rawPrices)
+    public function refactorData($rawPrices, $userApiOrigin)
     {
         $refactoredPricesArray = array();
         foreach ($rawPrices as $priceData) {            

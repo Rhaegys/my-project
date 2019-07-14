@@ -18,7 +18,6 @@ class InstrumentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Instrument::class);
     }
-
     public function findByOwner($value)
     {
         return $this->createQueryBuilder('i')

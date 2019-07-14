@@ -2,6 +2,9 @@
 
 namespace App\DataProcessing;
 
+/**
+ * This class calculates the Yearly Yield of user's instruments for two years
+ */
 class YearlyYieldCalculator
 {
     public function calculateYearlyYield($netWorth)

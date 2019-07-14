@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * CRUD Controller
  * @Route("/instrument")
  */
 class InstrumentController extends AbstractController
@@ -21,25 +22,29 @@ class InstrumentController extends AbstractController
     public function index(InstrumentRepository $instrumentRepository): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $userApi = $this->getUser()->getApiSource(); 
         return $this->render('instrument/index.html.twig', [                      
             'instruments' => $instrumentRepository->findByOwner($this->getUser()->getId()),
+            'api' => $userApi,
         ]);
     }
 
-    /**
+    /**     
      * @Route("/new", name="instrument_new", methods={"GET","POST"})
      */
     public function new(Request $request, InstrumentRepository $instrumentRepository): Response
-    {
-                
+    {                
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $instrument = new Instrument();
         $form = $this->createForm(InstrumentType::class, $instrument);
         $form->handleRequest($request);
+        /**
+         * This section checks if the instrument that user tries to add is already in user's assets. 
+         * In this case, user is redirected to edit that asset (probably to change quantity)
+         */
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $existingInstrument = $instrumentRepository->findOneBySymbol($instrument->getSymbol());   
-            $ff=$instrument->getQuantity();         
+            $existingInstrument = $instrumentRepository->findByOwnerAndSymbol($this->getUser()->getId(),$instrument->getSymbol());   
             if (null === $existingInstrument) {
                 $instrument->setOwner($this->getUser());            
                 $entityManager->persist($instrument);

@@ -54,6 +54,11 @@ class User implements UserInterface
      */
     private $assets;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $apiSource;
+
     public function __construct()
     {
         $this->assets = new ArrayCollection();
@@ -148,6 +153,17 @@ class User implements UserInterface
                 $asset->setOwner(null);
             }
         }
+        return $this;
+    }
+
+    public function getApiSource(): ?string
+    {
+        return $this->apiSource;
+    }
+
+    public function setApiSource(?string $apiSource): self
+    {
+        $this->apiSource = $apiSource;
 
         return $this;
     }   

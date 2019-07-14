@@ -4,9 +4,12 @@ namespace App\DataProcessing;
 
 use Symfony\Component\HttpClient\NativeHttpClient;
 
+/**
+ * This class gets data for each instrument passed to it from WTG API
+ */
 class DataFromWTG implements DataRetrieval
 {
-    public function getData($instruments)
+    public function getData($instruments, $userApiOrigin)
     {
         $httpClient = new NativeHttpClient();
         $data = array();  
@@ -18,3 +21,4 @@ class DataFromWTG implements DataRetrieval
         return $data;
     }    
 }
+ 

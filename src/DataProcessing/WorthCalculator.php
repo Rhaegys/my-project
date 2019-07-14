@@ -2,6 +2,9 @@
 
 namespace App\DataProcessing;
 
+/**
+ * This class calculates the worth of all of user's instruments by month
+ */
 class WorthCalculator
 {
     public function calculateNetWorth($assetsWorth)

@@ -2,9 +2,12 @@
 
 namespace App\DataProcessing;
 
+/**
+ * This class refactors data from Alpha API into single data format
+ */
 class RefactoredAlphaData implements DataRefactoring
 {
-    public function refactorData($rawPrices)
+    public function refactorData($rawPrices, $userApiOrigin)
     {   
         $refactoredPricesArray = array();
         foreach ($rawPrices as $priceData) {

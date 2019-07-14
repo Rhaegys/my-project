@@ -13,6 +13,9 @@ use App\Repository\InstrumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\NativeHttpClient;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security;
 
 class DataController extends AbstractController
 {
@@ -42,17 +45,22 @@ class DataController extends AbstractController
         /**
          * This section gets data for curent user, could be done in separate module
          *  */              
-        $userId = $this->getUser()->getId();        
+        $userId = $this->getUser()->getId();
+        $userApi = $this->getUser()->getApiSource();        
         $instruments = $instrumentRepository->findByOwner($userId);         
-        $rawPrices = $this->dataRetrieval->getData($instruments); 
+        if (!$instruments) {            
+            throw new \Exception('There are no Assets, you need to add some');
+        } 
+        $userApiOrigin = $this->getUser()->getApiSource();       
+        $rawPrices = $this->dataRetrieval->getData($instruments, $userApiOrigin); 
         /**
          * This section refactors data for processing
-         *  */                                   
-        $prices = $this->dataRefactoring->refactorData($rawPrices);                
+         *  */
+        $prices = $this->dataRefactoring->refactorData($rawPrices, $userApiOrigin);                
         $dataProcessor = new DataProcessor(); 
         /**
          * This section processes data for view
-         *  */   
+         *  */
         $assetsWorth = $dataProcessor->getAssetsWorth($instrumentRepository, $prices, $userId);        
         $worthCalculator = new WorthCalculator();
         $netWorth = $worthCalculator->calculateNetWorth($assetsWorth);
@@ -63,7 +71,19 @@ class DataController extends AbstractController
             'controller_name' => 'DataController',
             'data' => $netWorth,
             'yield' => $yearlyYield,
-            'assets' => $instruments
+            'assets' => $instruments,
+            'api' => $userApi,
         ]);
-    }    
+    }
+    /**
+     * This function sets up route to change Financial API
+     * @Route("/data/setapi/{api}", name="set_api", methods={"GET"})
+     */
+    public function setApi(Request $request): Response
+    {
+        $api = $request->query->get('api');
+        $this->getUser()->setApiSource($api);        
+        $this->getDoctrine()->getManager()->flush(); 
+        return $this->redirectToRoute('data');
+    }   
 }

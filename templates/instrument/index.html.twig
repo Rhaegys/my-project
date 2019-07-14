@@ -34,6 +34,13 @@
         </table>  
     </div>
     <div class="container">
-        <a href="{{ path('instrument_new') }}" class="btn btn-outline-primary">Create new</a>
+        <a href="{{ path('instrument_new') }}" class="btn btn-outline-primary">Add new Instrument to Assets</a>
+    </div>
+    <div class="container">
+    Data is taken from {{api}} API.
+    </div>
+    <div class="container">
+        <a href="http://127.0.0.1:8000/data/setapi/f?api=Alpha" class="btn btn-outline-primary">Change API to Alpha Vantage</a>
+        <a href="http://127.0.0.1:8000/data/setapi/f?api=WTG" class="btn btn-outline-primary">Change API to WTG</a>
     </div>
 {% endblock %}

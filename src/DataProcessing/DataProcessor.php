@@ -4,6 +4,9 @@ namespace App\DataProcessing;
 
 use App\Repository\InstrumentRepository;
 
+/**
+ * This class calculates the worth of each instrument by month
+ */
 class DataProcessor
 {
     public function getAssetsWorth(InstrumentRepository $instrumentRepository, $prices, $userId)
