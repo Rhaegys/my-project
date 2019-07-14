@@ -25,11 +25,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Controller\ProcessDataController:
+    App\Controller\DataController:
         bind: 
-            $dataRetrieval: '@App\DataProcessing\DataFromAlpha'
-            $dataRefactoring: '@App\DataProcessing\RefactoredAlphaData'
-    App\Entity\Instrument:
+            $dataRetrieval: '@App\DataProcessing\DataFromWTG'
+            $dataRefactoring: '@App\DataProcessing\RefactoredWTGData'
+    #App\Entity\Instrument:
     
 
 

@@ -1,35 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Instrument index{% endblock %}
+{% block title %}Your Assets{% endblock %}
 
 {% block body %}
-    <h1>Instrument index</h1>
-
-    <table class="table">
+    <div class="container">
+        <h1>Instrument index</h1>
+    </div>
+    <div class="container">
+        <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Symbol</th>
-                <th>actions</th>
-            </tr>
+        <tr>                
+        <th>Symbol</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for instrument in instruments %}
             <tr>
-                <td>{{ instrument.id }}</td>
-                <td>{{ instrument.symbol }}</td>
-                <td>
-                    <a href="{{ path('instrument_show', {'id': instrument.id})  }}">show</a>
-                    <a href="{{ path('instrument_edit', {'id': instrument.id}) }}">edit</a>
-                </td>
+            <td>{{ instrument.symbol }}</td>
+            <td>{{ instrument.quantity }}</td>
+            <td>
+            <a href="{{ path('instrument_show', {'id': instrument.id}) }}" class="btn btn-outline-info">Show</a>
+            <a href="{{ path('instrument_edit', {'id': instrument.id}) }}" class="btn btn-outline-info">Edit</a>
+            </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+            <td colspan="3">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('instrument_new') }}">Create new</a>
+        </table>  
+    </div>
+    <div class="container">
+        <a href="{{ path('instrument_new') }}" class="btn btn-outline-primary">Create new</a>
+    </div>
 {% endblock %}

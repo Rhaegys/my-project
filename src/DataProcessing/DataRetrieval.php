@@ -4,5 +4,5 @@ namespace App\DataProcessing;
 
 interface DataRetrieval
 {
-    public function getData();
+    public function getData($symbols);
 }

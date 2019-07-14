@@ -144,7 +144,6 @@ class User implements UserInterface
     {
         if ($this->assets->contains($asset)) {
             $this->assets->removeElement($asset);
-            // set the owning side to null (unless already changed)
             if ($asset->getOwner() === $this) {
                 $asset->setOwner(null);
             }

@@ -3,11 +3,14 @@
 {% block title %}Edit Instrument{% endblock %}
 
 {% block body %}
-    <h1>Edit Instrument</h1>
-
-    {{ include('instrument/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('instrument_index') }}">back to list</a>
-
-    {{ include('instrument/_delete_form.html.twig') }}
+    <div class="container">
+        <h1>Edit Instrument</h1>
+    </div>
+    <div class="container">
+        {{ include('instrument/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>  
+    <div class="container">    
+        <a href="{{ path('instrument_index') }}" class="btn btn-outline-primary">Back to list</a>  
+        {{ include('instrument/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

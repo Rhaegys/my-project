@@ -1,9 +1,17 @@
-{# templates/registration/register.html.twig #}
-{{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+{% extends 'base.html.twig' %}
 
-    <button type="submit">Register!</button>
+{% block body %}
+{{ form_start(form) }}
+    <div class="container">
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+    </div>
+    <div class="container">
+        <button type="submit" class="btn btn-outline-primary">Register!</button>
+        <a href="{{ path('app_login') }}" class="btn btn-outline-primary">Back to Login</a>
+    </div>
 {{ form_end(form) }}
+
+{% endblock %}

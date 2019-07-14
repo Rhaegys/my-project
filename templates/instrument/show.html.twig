@@ -3,24 +3,30 @@
 {% block title %}Instrument{% endblock %}
 
 {% block body %}
-    <h1>Instrument</h1>
-
-    <table class="table">
+    <div class="container">
+        <h1>Instrument</h1>
+    </div>
+    <div class="container">
+        <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ instrument.id }}</td>
-            </tr>
-            <tr>
-                <th>Symbol</th>
-                <td>{{ instrument.symbol }}</td>
-            </tr>
+        <tr>
+        <th>Id</th>
+        <td>{{ instrument.id }}</td>
+        </tr>
+        <tr>
+        <th>Symbol</th>
+        <td>{{ instrument.symbol }}</td>
+        </tr>
+        <tr>
+        <th>Quantity</th>
+        <td>{{ instrument.quantity }}</td>
+        </tr>
         </tbody>
-    </table>
-
-    <a href="{{ path('instrument_index') }}">back to list</a>
-
-    <a href="{{ path('instrument_edit', {'id': instrument.id}) }}">edit</a>
-
-    {{ include('instrument/_delete_form.html.twig') }}
+        </table>       
+        <a href="{{ path('instrument_edit', {'id': instrument.id}) }}" class="btn btn-outline-primary">Edit</a>
+    </div> 
+    <div class="container"> 
+        <a href="{{ path('instrument_index') }}" class="btn btn-outline-primary">Back to list</a>
+        {{ include('instrument/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

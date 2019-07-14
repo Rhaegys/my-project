@@ -20,13 +20,17 @@ class Instrument
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="assets")
      * @ORM\JoinColumn(nullable=false)
      */
-    #name="owner", referencedColumnName="id",
     private $owner;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $symbol;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantity;
 
     public function getId(): ?int
     {
@@ -38,21 +42,31 @@ class Instrument
         return $this->owner;
     }
 
-    public function setOwner(?User $owner): self
+    public function setOwner(?User $owner): void
     {
         $this->owner = $owner;
 
-        return $this;
-    }
 
+    }
+   
     public function getSymbol(): ?string
     {
         return $this->symbol;
     }
 
-    public function setSymbol(string $symbol): self
+    public function setSymbol(string $symbol): void
     {
-        $this->symbol = $symbol;
+        $this->symbol = $symbol;        
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }

@@ -19,32 +19,34 @@ class InstrumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Instrument::class);
     }
 
-    // /**
-    //  * @return Instrument[] Returns an array of Instrument objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByOwner($value)
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+            ->andWhere('i.owner = :val')
             ->setParameter('val', $value)
             ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Instrument
+    public function findOneBySymbol($value): ?Instrument
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+            ->andWhere('i.symbol = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    public function findByOwnerAndSymbol($owner,$symbol): ?Instrument
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.owner = :val')
+            ->setParameter('val', $owner)
+            ->andWhere('i.symbol = :val1')
+            ->setParameter('val1', $symbol)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

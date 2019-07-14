@@ -3,9 +3,13 @@
 {% block title %}New Instrument{% endblock %}
 
 {% block body %}
-    <h1>Create new Instrument</h1>
-
-    {{ include('instrument/_form.html.twig') }}
-
-    <a href="{{ path('instrument_index') }}">back to list</a>
+    <div class="container">
+        <h1>Create new Instrument</h1>
+    </div>
+    <div class="container">
+        {{ include('instrument/_form.html.twig') }}
+    </div>
+    <div class="container">
+        <a href="{{ path('instrument_index') }}" <a href="{{ path('instrument_index') }}" class="btn btn-outline-primary">Back to list</a>
+    </div>
 {% endblock %}

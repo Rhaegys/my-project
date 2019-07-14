@@ -4,18 +4,26 @@ namespace App\DataProcessing;
 
 class RefactoredAlphaData implements DataRefactoring
 {
-    public function refactorData($data)
+    public function refactorData($rawPrices)
     {   
-        $data1=array();
-        #$i=0;
-        $data0=$data['Technical Analysis: MIDPOINT'];
-        foreach ($data0 as $key => $value) {
-            #$i++;
-            foreach ($value as $key1 => $value1) {
-                $value=$value1[1];
-
-            }                        
-        }
-        return $data0;
-    }    
+        $refactoredPricesArray = array();
+        foreach ($rawPrices as $priceData) {
+            $refactoredPrices = array();
+            $monthsCount = 0;            
+            foreach ($priceData['Technical Analysis: MIDPOINT'] as $key => $value) {
+            $monthsCount++;
+            if ($monthsCount < 25) {
+                foreach ($value as $key1 => $value1) {                    
+                    $date = explode(" ",$key);
+                    $date = date('F, Y', strtotime($date[0]));
+                    $refactoredPrices['Date'][] = $date;
+                    $refactoredPrices['Price'][] = $value1;
+                   }
+                }
+                $refactoredPricesArray[$priceData['Meta Data']['1: Symbol']] = $refactoredPrices;
+                }
+            }  
+        return $refactoredPricesArray;  
+    }
 }
+ 

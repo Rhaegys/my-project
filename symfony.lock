@@ -111,6 +111,18 @@
     "psr/log": {
         "version": "1.1.0"
     },
+    "sensio/framework-extra-bundle": {
+        "version": "5.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.2",
+            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
+        },
+        "files": [
+            "config/packages/sensio_framework_extra.yaml"
+        ]
+    },
     "symfony/cache": {
         "version": "v4.3.2"
     },
@@ -135,6 +147,18 @@
     },
     "symfony/debug": {
         "version": "v4.3.2"
+    },
+    "symfony/debug-bundle": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "f8863cbad2f2e58c4b65fa1eac892ab189971bea"
+        },
+        "files": [
+            "config/packages/dev/debug.yaml"
+        ]
     },
     "symfony/dependency-injection": {
         "version": "v4.3.2"
@@ -325,6 +349,9 @@
             "./config/packages/test/validator.yaml",
             "./config/packages/validator.yaml"
         ]
+    },
+    "symfony/var-dumper": {
+        "version": "v4.3.2"
     },
     "symfony/var-exporter": {
         "version": "v4.3.2"

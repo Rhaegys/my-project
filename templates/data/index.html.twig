@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Financial Report{% endblock %}
+
+{% block body %}
+    <div class="container">
+        Your Assets' Worth for the last 2 Years! <br>
+        Assets you have:    
+    <div class="container">
+        <div class="container">
+        <table class="table">
+        <thead>
+        <tr>                
+        <th>Symbol</th>
+        <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for instrument in assets %}
+            <tr>
+            <td>{{ instrument.symbol }}</td>
+            <td>{{ instrument.quantity }}</td>            
+            </tr>
+        {% else %}
+            <tr>
+            <td colspan="3">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>  
+    </div>
+    </div>
+    <div class="container">
+    </div>
+    <div class="container">
+        <div class="container">
+            <table class="table"><tbody>
+            <tr>
+            <td>
+            <table class="table"><tbody>
+            {% for symbol in data.Date %}
+                <tr><td>{{ symbol }}</li>
+                </td>
+            {% endfor %}
+            </tbody></table>
+            </td>
+            <td>
+            <table class="table"><tbody>
+            {% for symbol in data.Price %}
+                <tr><td>{{ symbol }} USD</li>
+                </td>
+            {% endfor %}  
+            </tbody></table>
+            </td>
+            </tr>
+            </tbody></table>
+            </div>
+        <div class="container">
+            Your Yearly Yield is {{ yield }}%!   
+        </div>
+    </div>
+{% endblock %}
