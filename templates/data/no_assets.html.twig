@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+<div class="container"> 
+You need to add Assets first
+<br>
+<a href="{{ path('instrument_index') }}" class="btn btn-outline-primary">Back to Assets</a>  
+</div>
+{% endblock %}

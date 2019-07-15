@@ -48,8 +48,9 @@ class DataController extends AbstractController
         $userId = $this->getUser()->getId();
         $userApi = $this->getUser()->getApiSource();        
         $instruments = $instrumentRepository->findByOwner($userId);         
-        if (!$instruments) {            
-            throw new \Exception('There are no Assets, you need to add some');
+        if (!$instruments) {  
+            return $this->render('data/no_assets.html.twig', [                
+            ]);          
         } 
         $userApiOrigin = $this->getUser()->getApiSource();       
         $rawPrices = $this->dataRetrieval->getData($instruments, $userApiOrigin); 
