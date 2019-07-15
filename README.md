@@ -14,6 +14,7 @@ Make sure that:
 * PHP 7.2 is the current version of PHP used
 * MySQL Server 8 is installed (I used Community version https://dev.mysql.com/downloads/mysql/) and configured for .env file
 * Composer and GIT are installed
+# Troubleshooting
 * http://127.0.0.1:8000/data/setapi/f?api=WTG - this link is located at templates/instrument/index.html.twig (43,44 lines)- if your server has different address than 127.0.0.1:8000 you'll need to change that link 
 * MySQL sha problem ProgramData\MySQL\MySQL Server 8.0\my.ini default_authentication_plugin=mysql_native_password There could be a problem with MySQL, you have to use native_password istead of SHA encrypted one, for that you'll need to delete user and create user again with default authentication. 
 
@@ -40,5 +41,5 @@ git clone https://github.com/Rhaegys/my-project.git
 * 3hrs - Fixing errors and bugs
 * 0.5hrs - Testing of the app
 
-All in all time estimates are pretty vague - can't remember all of them, only the first 5 entries are entirely correct
+All in all the time estimates are pretty vague - can't remember all of them, only the first 5 entries are entirely correct
 
