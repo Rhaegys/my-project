@@ -14,6 +14,7 @@ Make sure that:
 * PHP 7.2 is the current version of PHP used
 * MySQL Server 8 is installed (I used Community version https://dev.mysql.com/downloads/mysql/) and configured for .env file
 * Composer and GIT are installed
+* http://127.0.0.1:8000/data/setapi/f?api=WTG - this link is located at templates/instrument/index.html.twig (43,44 lines)- if your server has different address than 127.0.0.1:8000 you'll need to change that link 
 
 # Repository
 git clone https://github.com/Rhaegys/my-project.git
